@@ -1,15 +1,10 @@
 import cv2
 import numpy as np
-import pytesseract
 from paddleocr import PaddleOCR 
-import threading
-
-pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract.exe'
 
 ocr = PaddleOCR(lang='en')
 
 cap = cv2.VideoCapture(0)
-
 
 def process_frame(frame):
     license_plate = None
@@ -97,10 +92,8 @@ while True:
     if not ret:
         print("Không thể lấy hình ảnh từ camera")
         break
-    threading.Thread(target=process_frame, args=(frame,)).start()
-    # cv2.imwrite("temp.jpg", frame)
+    process_frame(frame)
     cv2.imshow("Camera", frame)
-
     if cv2.waitKey(1) & 0xFF == ord('q'):
         break
 
