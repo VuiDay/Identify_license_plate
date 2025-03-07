@@ -4,15 +4,6 @@ from paddleocr import PaddleOCR
 
 ocr = PaddleOCR(lang='en')
 
-GST_PIPELINE = (
-    "nvarguscamerasrc sensor-id=0 ! "
-    "video/x-raw(memory:NVMM), width=(int)1280, height=(int)720, format=(string)NV12, framerate=(fraction)30/1 ! "
-    "nvvidconv flip-method=0 ! "
-    "video/x-raw, width=(int)1280, height=(int)720, format=(string)BGRx ! "
-    "videoconvert ! "
-    "video/x-raw, format=(string)BGR ! appsink"
-)
-
 cap = cv2.VideoCapture(0)
 
 def process_frame(frame):
