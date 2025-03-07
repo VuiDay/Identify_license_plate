@@ -1,0 +1,18 @@
+sudo apt update
+sudo apt install -y \
+    libgstreamer1.0-dev \
+    libgstreamer-plugins-base1.0-dev \
+    libgstreamer-plugins-good1.0-dev \
+    libgstreamer-plugins-bad1.0-dev \
+    gstreamer1.0-tools
+
+
+gst-inspect-1.0 --version
+
+
+pip uninstall opencv-python opencv-python-headless -y
+sudo apt remove --purge libopencv* -y
+sudo apt autoremove -y
+
+
+sudo apt install -y python3-opencv
